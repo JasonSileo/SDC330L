@@ -1,33 +1,28 @@
-/******************************************************************
- * Environment.java
+/**********************************
+ * FruitPlant.java
  * Name: Jason Sileo
- * Date: 10/24/2025
- * Class demonstrating use of access specifiers and encapsulation
-*/
+ * Date: 11/01/25
+ * Purpose: Represents a fruit-bearing plant (derived from Plant).
+ **********************************/
 
 public class FruitPlant extends Plant {
-    // Default constructor
-    public FruitPlant() {
-        super("Generic Fruit", 6.0, "NPK 10-10-10", new Environment("Indoor Tent", 6.0, 70));
-    }
+    private boolean producesSeeds;
 
-    // Parameterized constructor
-    public FruitPlant(String name, double idealPH, String nutrientMix, Environment environment) {
-        super(name, idealPH, nutrientMix, environment);
+    public FruitPlant(String name, double idealPH, String nutrientMix, boolean producesSeeds) {
+        super(name, idealPH, nutrientMix, "FRUIT");
+        this.producesSeeds = producesSeeds;
     }
 
     @Override
     public void grow() {
-        System.out.println(name + " plant is flowering and setting fruit.");
+        System.out.println(name + " is growing fruit under ideal pH " + idealPH + " using " + nutrientMix + ".");
     }
 
-    @Override
-    public void harvest() {
-        System.out.println("Harvesting ripe fruit from " + name + ".");
-    }
+    public boolean hasSeeds() { return producesSeeds; }
 
     @Override
-    public void checkStatus() {
-        System.out.println(name + " plant status: Healthy and fruiting.");
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Produces Seeds: " + (producesSeeds ? "Yes" : "No"));
     }
 }

@@ -1,27 +1,23 @@
-/******************************************************************
- * Environment.java
+/**********************************
+ * OutdoorEnvironment.java
  * Name: Jason Sileo
- * Date: 10/24/2025
- * Class demonstrating use of access specifiers and encapsulation
-*/
+ * Date: 11/01/25
+ * Purpose: Simulates outdoor growing conditions with drip irrigation.
+ **********************************/
 
 public class OutdoorEnvironment extends Environment {
-    private String season;
-
-    public OutdoorEnvironment(String name, double ph, int waterTemp, String season) {
-        super(name, ph, waterTemp);
-        this.season = season;
-    }
+    private LightSystem lightSystem;
 
     public OutdoorEnvironment() {
-        super("Default Outdoor", 6.4, 75);
-        this.season = "Summer";
+        super("Outdoor", 75.0, 68.0);
+        this.lightSystem = new LightSystem("Sunlight", 0);
     }
 
     @Override
-    public void displayInfo() {
-        System.out.println("\nEnvironment Type: Outdoor");
-        super.displayInfo();
-        System.out.println("Season: " + season);
+    public void regulate() {
+        System.out.println("Outdoor drip system stabilizing water temperature at " + waterTemp + "°F.");
+        System.out.println("Natural sunlight provides optimal light exposure for plant growth.");
     }
+
+    public LightSystem getLightSystem() { return lightSystem; }
 }

@@ -1,34 +1,24 @@
-/******************************************************************
+/**********************************
  * Environment.java
  * Name: Jason Sileo
- * Date: 10/24/2025
- * Class demonstrating use of access specifiers and encapsulation
-*/
+ * Date: 11/01/25
+ * Purpose: Abstract class for different growing environments (Indoor/Outdoor).
+ **********************************/
 
-public class Environment {
-    private String name;
-    private double ph;
-    private int waterTemp;
+public abstract class Environment {
+    protected String environmentType;
+    protected double airTemp;
+    protected double waterTemp;
 
-    public Environment() {
-        this.name = "Default Environment";
-        this.ph = 6.0;
-        this.waterTemp = 70;
-    }
-
-    public Environment(String name, double ph, int waterTemp) {
-        this.name = name;
-        this.ph = ph;
+    public Environment(String environmentType, double airTemp, double waterTemp) {
+        this.environmentType = environmentType;
+        this.airTemp = airTemp;
         this.waterTemp = waterTemp;
     }
 
-    public String getName() { return name; }
-    public double getPh() { return ph; }
-    public int getWaterTemp() { return waterTemp; }
+    public String getEnvironmentType() { return environmentType; }
+    public double getAirTemp() { return airTemp; }
+    public double getWaterTemp() { return waterTemp; }
 
-    public void displayInfo() {
-        System.out.println("Environment: " + name);
-        System.out.println("Water Temp: " + waterTemp + "°F");
-        System.out.println("pH Level: " + ph);
-    }
+    public abstract void regulate();
 }

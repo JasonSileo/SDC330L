@@ -1,26 +1,30 @@
-/******************************************************************
- * Environment.java
+/**********************************
+ * LightSystem.java
  * Name: Jason Sileo
- * Date: 10/24/2025
- * Class demonstrating use of access specifiers and encapsulation
-*/
+ * Date: 11/01/25
+ * Purpose: Manages light settings for indoor and outdoor environments.
+ **********************************/
 
 public class LightSystem {
+    private String lightType;
+    private int lightHours;
     private int intensity;
 
-    public LightSystem() {
-        this.intensity = 80;
+    public LightSystem(String lightType, int lightHours) {
+        this.lightType = lightType;
+        this.lightHours = lightHours;
+        this.intensity = 15; // start low for seedlings
     }
 
-    public LightSystem(int intensity) {
-        this.intensity = intensity;
+    public void adjustIntensity(int amount) {
+        intensity = Math.max(15, Math.min(100, intensity + amount));
     }
 
-    public int getIntensity() {
-        return intensity;
-    }
+    public String getLightType() { return lightType; }
+    public int getLightHours() { return lightHours; }
+    public int getIntensity() { return intensity; }
 
-    public void displayInfo() {
-        System.out.println("Light Intensity: " + intensity + "%");
+    public void displayStatus() {
+        System.out.println("Light Type: " + lightType + " | Hours: " + lightHours + " | Intensity: " + intensity + "%");
     }
 }
